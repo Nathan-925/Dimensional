@@ -1,10 +1,10 @@
 package dimensional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.*;
 import java.util.Arrays;
-import org.junit.Before;
-import org.junit.Test;
+import java.util.regex.Pattern;
+
+import org.junit.*;
 import org.junit.function.ThrowingRunnable;
 
 public class DimensionalArrayTest {
@@ -13,7 +13,7 @@ public class DimensionalArrayTest {
     
     @Before
     public void before() {
-        test = new DimensionalArray<>(4, n -> null, 4, 4, 4, 4);
+        test = new DimensionalArray<>(4, n -> n, 4, 4, 4, 4);
     }
     
     @Test
@@ -24,6 +24,7 @@ public class DimensionalArrayTest {
     
     @Test
     public void testGetAndSet() {
+    	assertEquals(Integer.valueOf(159), test.get(3, 3, 1, 2));
         test.set(24, 0, 1, 2, 0);
         assertEquals(Integer.valueOf(24), test.get(0, 1, 2, 0));
     }
@@ -35,7 +36,7 @@ public class DimensionalArrayTest {
     
     @Test
     public void testToString() {
-        assertEquals(Arrays.toString(new String[256]), test.toString());
+        assertTrue(Pattern.matches("\\[(\\d+,?\\s*)*\\]", test.toString()));
     }
     
     @Test
@@ -46,7 +47,14 @@ public class DimensionalArrayTest {
                 DimensionalArray<Integer> arr = new DimensionalArray<>(4, 1, 2, 3);
             }
         };
+        assertThrows(IllegalArgumentException.class, testRunnable);
         
+        testRunnable = new ThrowingRunnable() {
+        	@Override
+			public void run() {
+				test.get(1, 2, 3, 4, 5);
+			}
+        };
         assertThrows(IllegalArgumentException.class, testRunnable);
     }
     
