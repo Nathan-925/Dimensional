@@ -1,8 +1,11 @@
 package dimensional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import java.util.Arrays;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.function.ThrowingRunnable;
 
 public class DimensionalArrayTest {
 
@@ -33,6 +36,18 @@ public class DimensionalArrayTest {
     @Test
     public void testToString() {
         assertEquals(Arrays.toString(new String[256]), test.toString());
+    }
+    
+    @Test
+    public void testExceptions() {
+        ThrowingRunnable testRunnable = new ThrowingRunnable() {
+            @Override
+            public void run() {
+                DimensionalArray<Integer> arr = new DimensionalArray<>(4, 1, 2, 3);
+            }
+        };
+        
+        assertThrows(IllegalArgumentException.class, testRunnable);
     }
     
 }
