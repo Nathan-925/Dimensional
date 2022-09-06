@@ -1,7 +1,6 @@
 package dimensional;
 
 import static org.junit.Assert.*;
-import java.util.Arrays;
 import java.util.regex.Pattern;
 
 import org.junit.*;
@@ -9,7 +8,7 @@ import org.junit.function.ThrowingRunnable;
 
 public class DimensionalArrayTest {
 
-    DimensionalArray<Integer> test;
+    private DimensionalArray<Integer> test;
     
     @Before
     public void before() {
