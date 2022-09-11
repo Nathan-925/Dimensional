@@ -30,12 +30,12 @@ public class DimensionalArray<T> {
 		if (indexes.length != widths.length)
 			throw new IllegalArgumentException("number of indexes must be equal to number of dimensions");
 
-		int ind = indexes[0];
-		for (int i = 1; i < indexes.length; i++) {
-			int n = indexes[i];
-			for (int j = i - 1; j >= 0; j--)
-				n *= widths[j];
-			ind += n;
+		int ind = 0, factor = 1;
+		for (int i = 0; i < indexes.length; i++) {
+			if(indexes[i] >= widths[i])
+				throw new IllegalArgumentException("Index "+indexes[i]+" is out of bounds for length "+widths[i]);
+			ind += indexes[i] * factor;
+			factor *= widths[i];
 		}
 		return ind;
 	}
