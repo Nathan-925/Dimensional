@@ -8,10 +8,7 @@ public class DimensionalArray<T> {
 	private int[] widths;
 	private ArrayList<T> arr;
 
-	public DimensionalArray(int dimensions, Function<Integer, T> function, int... widths) {
-		if (widths.length != dimensions)
-			throw new IllegalArgumentException("length of widths must equal dimensions");
-
+	public DimensionalArray(Function<Integer, T> function, int... widths) {
 		this.widths = widths;
 		int num = 1;
 		for (int n : widths)
@@ -21,12 +18,12 @@ public class DimensionalArray<T> {
 			arr.add(function.apply(i));
 	}
 
-	public DimensionalArray(int dimensions, int... widths) {
-		this(dimensions, n -> null, widths);
+	public DimensionalArray(T initial, int... widths) {
+		this(n -> initial, widths);
 	}
-
-	public DimensionalArray(int dimensions, T initial, int... widths) {
-		this(dimensions, n -> initial, widths);
+	
+	public DimensionalArray(int... widths) {
+		this(n -> null, widths);
 	}
 
 	private int getIndex(int[] indexes) {

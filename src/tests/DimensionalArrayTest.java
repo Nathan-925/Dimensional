@@ -13,7 +13,7 @@ public class DimensionalArrayTest {
 
 	@BeforeEach
 	public void before() {
-		test = new DimensionalArray<>(4, n -> n, 4, 4, 4, 4);
+		test = new DimensionalArray<>(n -> n, 4, 4, 4, 4);
 	}
 
 	@Test
@@ -41,8 +41,6 @@ public class DimensionalArrayTest {
 
 	@Test
 	public void testExceptions() {
-		assertThrows(IllegalArgumentException.class, () -> new DimensionalArray<>(4, 1, 2, 3));
-
 		assertThrows(IllegalArgumentException.class, () -> test.get(1, 2, 3, 4, 5));
 	}
 
