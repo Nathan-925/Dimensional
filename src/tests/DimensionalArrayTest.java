@@ -22,8 +22,8 @@ public class DimensionalArrayTest {
 
 	@Test
 	public void testGetSize() {
-		assertEquals(256, test.getSize());
-		assertEquals(4, test.getSize(0));
+		assertEquals(256, test.size());
+		assertEquals(4, test.size(0));
 	}
 
 	@Test

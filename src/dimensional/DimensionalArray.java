@@ -48,11 +48,11 @@ public class DimensionalArray<T> {
 		return arr.get(getIndex(indexes));
 	}
 
-	public int getSize() {
+	public int size() {
 		return arr.size();
 	}
 
-	public int getSize(int dimension) {
+	public int size(int dimension) {
 		return widths[dimension];
 	}
 
