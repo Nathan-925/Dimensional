@@ -1,5 +1,7 @@
 package dimensional;
 
+import java.util.Arrays;
+
 public class DimensionalVector {
 
 	public static DimensionalVector add(DimensionalVector v1, DimensionalVector v2) {
@@ -46,6 +48,11 @@ public class DimensionalVector {
 
 	public int getDimension() {
 		return arr.length;
+	}
+	
+	@Override
+	public String toString() {
+		return Arrays.toString(arr);
 	}
 
 }

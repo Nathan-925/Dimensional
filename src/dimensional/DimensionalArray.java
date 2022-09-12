@@ -1,6 +1,7 @@
 package dimensional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.function.Function;
 
 public class DimensionalArray<T> {
@@ -9,7 +10,7 @@ public class DimensionalArray<T> {
 	private ArrayList<T> arr;
 
 	public DimensionalArray(Function<Integer, T> function, int... widths) {
-		this.widths = widths;
+		this.widths = Arrays.copyOf(widths, widths.length);
 		int num = 1;
 		for (int n : widths)
 			num *= n;
