@@ -59,6 +59,10 @@ public class DimensionalArray<T> {
 	public int getDimension() {
 		return widths.length;
 	}
+	
+	public ArrayList<T> getData() {
+		return arr;
+	}
 
 	@Override
 	public String toString() {
